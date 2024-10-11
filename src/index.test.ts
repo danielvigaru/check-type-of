@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { CheckType, TItemType } from './check-type';
+import { CheckType, TItemType } from './index';
 
 describe('Check type property', () => {
     describe('Check numbers', () => {
