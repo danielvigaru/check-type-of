@@ -5,8 +5,8 @@
   "scripts": {
     "prebuild": "del-cli lib/*",
     "build": "tsc",
-    "test": "jest",
-    "start:dev": "jest --watchAll"
+    "test:once": "jest",
+    "test:watch": "jest --watchAll"
   },
   "keywords": [],
   "author": "Daniel Vigaru",
