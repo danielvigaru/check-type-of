@@ -50,7 +50,7 @@ export class CheckType {
         }
         return this;
     }
-    public isNotObject(callback: () => void): CheckType {
+    public isNotObject(callback: () => void): void {
         if (
             typeof this.itemToCheck !== 'object' ||
             Array.isArray(this.itemToCheck) ||
@@ -58,7 +58,6 @@ export class CheckType {
         ) {
             callback();
         }
-        return this;
     }
 
     public isArray(callback: () => void): CheckType {
@@ -67,11 +66,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotArray(callback: () => void): CheckType {
+    public isNotArray(callback: () => void): void {
         if (!Array.isArray(this.itemToCheck)) {
             callback();
         }
-        return this;
     }
 
     public isDate(callback: () => void): CheckType {
@@ -80,11 +78,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotDate(callback: () => void): CheckType {
+    public isNotDate(callback: () => void): void {
         if (!(this.itemToCheck instanceof Date)) {
             callback();
         }
-        return this;
     }
 
     public isMap(callback: () => void): CheckType {
@@ -93,11 +90,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotMap(callback: () => void): CheckType {
+    public isNotMap(callback: () => void): void {
         if (!(this.itemToCheck instanceof Map)) {
             callback();
         }
-        return this;
     }
 
     public isString(callback: () => void): CheckType {
@@ -106,11 +102,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotString(callback: () => void): CheckType {
+    public isNotString(callback: () => void): void {
         if (typeof this.itemToCheck !== 'string') {
             callback();
         }
-        return this;
     }
 
     public isNumber(callback: () => void): CheckType {
@@ -119,11 +114,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotNumber(callback: () => void): CheckType {
+    public isNotNumber(callback: () => void): void {
         if (!isNumber(this.itemToCheck)) {
             callback();
         }
-        return this;
     }
 
     public isFunction(callback: () => void): CheckType {
@@ -132,11 +126,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotFunction(callback: () => void): CheckType {
+    public isNotFunction(callback: () => void): void {
         if (typeof this.itemToCheck !== 'function') {
             callback();
         }
-        return this;
     }
 
     public isBoolean(callback: () => void): CheckType {
@@ -145,11 +138,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotBoolean(callback: () => void): CheckType {
+    public isNotBoolean(callback: () => void): void {
         if (typeof this.itemToCheck !== 'boolean') {
             callback();
         }
-        return this;
     }
 
     public isNull(callback: () => void): CheckType {
@@ -158,11 +150,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotNull(callback: () => void): CheckType {
+    public isNotNull(callback: () => void): void {
         if (this.itemToCheck !== null) {
             callback();
         }
-        return this;
     }
 
     public isUndefined(callback: () => void): CheckType {
@@ -171,11 +162,10 @@ export class CheckType {
         }
         return this;
     }
-    public isNotUndefined(callback: () => void): CheckType {
+    public isNotUndefined(callback: () => void): void {
         if (this.itemToCheck !== undefined) {
             callback();
         }
-        return this;
     }
 
     public isNullish(callback: () => void): CheckType {
@@ -184,10 +174,9 @@ export class CheckType {
         }
         return this;
     }
-    public isNotNullish(callback: () => void): CheckType {
+    public isNotNullish(callback: () => void): void {
         if (this.itemToCheck !== null && this.itemToCheck !== undefined) {
             callback();
         }
-        return this;
     }
 }
