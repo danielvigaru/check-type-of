@@ -1,0 +1,27 @@
+{
+  "name": "type-checker",
+  "version": "0.0.1",
+  "main": "lib/check-type.js",
+  "scripts": {
+    "prebuild": "del-cli lib/*",
+    "build": "tsc",
+    "test": "jest",
+    "start:dev": "jest --watchAll"
+  },
+  "keywords": [],
+  "author": "Daniel Vigaru",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/is-number": "^7.0.5",
+    "@types/jest": "^29.5.13",
+    "del-cli": "^5.1.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "is-number": "^7.0.0"
+  }
+}
