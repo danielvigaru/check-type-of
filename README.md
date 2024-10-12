@@ -19,7 +19,8 @@ And to add more complex type checking:
 
 ```javascript
 // ES6 class
-typeof class A {}; // 'function'
+class A {}
+typeof A; // 'function'
 CheckType.of(A).type; // 'class'
 
 // ES5 class
