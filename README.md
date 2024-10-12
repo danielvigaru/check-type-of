@@ -4,9 +4,9 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/min/%40danielvigaru%2Fcheck-type-of)](https://bundlephobia.com/package/@danielvigaru/check-type-of)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=flat&logo=ko-fi&logoColor=white&color=D34F4C)](https://ko-fi.com/Y8Y1DZBZU)
 
-## Why did I make this?
+## Why did I create this?
 
-Because in JavaScript (almost) everything is an object:
+Because in JavaScript, (almost) everything is an object:
 
 ```javascript
 typeof {}; // -> 'object' - totally agree
@@ -38,10 +38,10 @@ CheckType.of(function () {}).type; // -> 'function'
 
 ## Usage / Examples
 
-Import the `CheckType` class, but do not instantiate it, just use `CheckType.of(item)` to access all the methods.
+Import the `CheckType` class without instantiating it; just use `CheckType.of(item)` to access all the methods.
 
 ```javascript
-import { CheckType, TItemType } from 'check-type-of';
+import { CheckType, TItemType } from '@danielvigaru/check-type-of';
 ```
 
 ### Using the `type` property
@@ -57,9 +57,9 @@ See how it says `'array'` and not `'object'`? Yeah.
 
 ### Using the `is...` and `isNot...` methods
 
-These receive a callback as a parameter and execute it if the item you're checking evaluates to that type. You can chain multiple `is...` methods.
+These methods take a callback as a parameter and execute it if the item being checked matches the specified type. You can chain multiple `is...` methods.
 
-1. Use the `is...` and `isNot...` counterpart of a method like you would use an if/else statement:
+1. Use `is...` and `isNot...` methods like you would use if/else statements:
 
 ```javascript
 CheckType.of(new Date())
@@ -69,9 +69,9 @@ CheckType.of(new Date())
 // Output: "Looks like we've got ourselves a date!"
 ```
 
-Note: You can't chain multiple `isNot...` methods, because you shouldn't. It would just fire most of them every time.
+Note: You can't chain multiple `isNot...` methods because it wouldn't make sense; it would execute all/most of them each time.
 
-2. Use multiple methods like you would use a switch statement:
+2. Chain multiple methods like you would in a switch statement:
 
 ```javascript
 CheckType.of(someUnknownVariable)
@@ -81,6 +81,8 @@ CheckType.of(someUnknownVariable)
 ```
 
 ## Method Reference
+
+All of these methods have an `isNot...` counterpart.
 
 | **Method**    | **Executes the callback if the item is:**    | `.type` property |
 | ------------- | -------------------------------------------- | ---------------- |
@@ -97,6 +99,4 @@ CheckType.of(someUnknownVariable)
 | `isString`    | a string                                     | `'string'`       |
 | `isUndefined` | `undefined`                                  | `'undefined'`    |
 
-All of these methods have an `isNot...` counterpart which will execute if the item you check doesn't evaluate to the `is...` method with the same name.
-
-\* Comodity method that doesn't write a value on the `.type` property.
+\* Utility method that does not assign a value to the `.type` property.
