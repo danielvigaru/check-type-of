@@ -68,8 +68,9 @@ CheckType.of(someUnknownVariable)
 | ------------- | -------------------------------------------- | ---------------- |
 | `isArray`     | `[]`, instanceof `Array`                     | `'array'`        |
 | `isBoolean`   | `true`, `false`                              | `'boolean'`      |
+| `isClass`     | ES5 class, ES6 class                         | `'class'`        |
 | `isDate`      | instanceof `Date`                            | `'date'`         |
-| `isFunction`  | a function                                   | `'function'`     |
+| `isFunction`  | a function that isn't an ES5 class           | `'function'`     |
 | `isMap`       | instanceof `Map`                             | `'map'`          |
 | `isNull`      | `null`                                       | `'null'`         |
 | `isNullish`   | `null`, `undefined`                          | -                |
