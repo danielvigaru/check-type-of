@@ -2,6 +2,9 @@
   "name": "check-type-of",
   "version": "0.0.1",
   "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "prebuild": "del-cli lib/*",
     "build": "tsc",
