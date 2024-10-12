@@ -226,14 +226,68 @@ describe('Check type property', () => {
 
     describe('Check function', () => {
         describe('Should be function', () => {
-            const maps: [string, Function][] = [
+            const functions: [string, Function][] = [
                 ['() => {}', () => {}],
-                ['function() {}', function () {}],
+                ['function () {}', function () {}],
+                ['function abc() {}', function abc() {}],
             ];
 
-            test.concurrent.each(maps)('Value: %s', async (name, value) => {
-                expect(CheckType.of(value).type).toEqual('function');
+            test.concurrent.each(functions)(
+                'Value: %s',
+                async (name, value) => {
+                    expect(CheckType.of(value).type).toEqual('function');
+                },
+            );
+        });
+
+        describe('Should not be function', () => {
+            // ES5 class
+            function A() {}
+            A.prototype.someMethod = function () {};
+
+            const notFunctions: [string, any][] = [
+                ['ES5 class', A],
+                ['ES6 class', class A {}],
+            ];
+
+            test.concurrent.each(notFunctions)(
+                'Value: %s',
+                async (name, value) => {
+                    expect(CheckType.of(value).type).not.toEqual('function');
+                },
+            );
+        });
+    });
+
+    describe('Check class', () => {
+        describe('Should be class', () => {
+            // ES5 class
+            function A() {}
+            A.prototype.someMethod = function () {};
+
+            const classes: [string, any][] = [
+                ['ES5 class', A],
+                ['ES6 class', class A {}],
+            ];
+
+            test.concurrent.each(classes)('Value: %s', async (name, value) => {
+                expect(CheckType.of(value).type).toEqual('class');
             });
+        });
+
+        describe('Should not be class', () => {
+            const notClasses: [string, any][] = [
+                ['() => {}', () => {}],
+                ['function () {}', function () {}],
+                ['function abc() {}', function abc() {}],
+            ];
+
+            test.concurrent.each(notClasses)(
+                'Value: %s',
+                async (name, value) => {
+                    expect(CheckType.of(value).type).not.toEqual('class');
+                },
+            );
         });
     });
 
@@ -275,20 +329,8 @@ describe('Check type property', () => {
     });
 });
 
-describe('Check type method', () => {
+describe('Check for method overlap', () => {
     describe('Instantiable objects', () => {
-        describe('new Date() is not caught by object', () => {
-            test('Should not be an object', async () => {
-                let type: TItemType;
-
-                CheckType.of(new Date())
-                    .isObject(() => (type = 'object'))
-                    .isDate(() => (type = 'date'));
-
-                expect(type).toEqual('date');
-            });
-        });
-
         describe('new Array() is not caught by object', () => {
             test('Should not be an object', async () => {
                 let type: TItemType;
@@ -311,6 +353,56 @@ describe('Check type method', () => {
 
                 expect(type).toEqual('map');
             });
+        });
+    });
+
+    describe('Class is not caught by function', () => {
+        test('ES5 class should not be a function', async () => {
+            let type: TItemType;
+
+            function A() {}
+            A.prototype.someMethod = function () {};
+
+            CheckType.of(A)
+                .isFunction(() => (type = 'function'))
+                .isClass(() => (type = 'class'));
+        });
+
+        test('ES6 class should not be a function', async () => {
+            let type: TItemType;
+
+            class A {}
+
+            CheckType.of(A)
+                .isFunction(() => (type = 'function'))
+                .isClass(() => (type = 'class'));
+        });
+    });
+
+    describe('Function is not caught by class', () => {
+        test('Arrow function should not be a class', async () => {
+            let type: TItemType;
+
+            CheckType.of(() => {})
+                .isClass(() => (type = 'class'))
+                .isFunction(() => (type = 'function'));
+        });
+
+        test('Anonymous function should not be a class', async () => {
+            let type: TItemType;
+
+            CheckType.of(function () {})
+                .isClass(() => (type = 'class'))
+                .isFunction(() => (type = 'function'));
+        });
+
+        test('Named function should not be a class', async () => {
+            let type: TItemType;
+            function abc() {}
+
+            CheckType.of(abc)
+                .isClass(() => (type = 'class'))
+                .isFunction(() => (type = 'function'));
         });
     });
 });

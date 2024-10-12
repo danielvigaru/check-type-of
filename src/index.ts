@@ -1,8 +1,9 @@
-import { isNumber } from './helpers';
+import { isClassDefinition, isNumber } from './helpers';
 
 export type TItemType =
     | 'array'
     | 'boolean'
+    | 'class'
     | 'date'
     | 'function'
     | 'map'
@@ -25,18 +26,19 @@ export class CheckType {
     }
 
     get type(): TItemType {
-        let type;
+        let type: TItemType = undefined;
 
-        this.isObject(() => (type = 'object'))
-            .isArray(() => (type = 'array'))
-            .isString(() => (type = 'string'))
-            .isNumber(() => (type = 'number'))
-            .isFunction(() => (type = 'function'))
+        this.isArray(() => (type = 'array'))
             .isBoolean(() => (type = 'boolean'))
+            .isClass(() => (type = 'class'))
             .isDate(() => (type = 'date'))
+            .isFunction(() => (type = 'function'))
+            .isMap(() => (type = 'map'))
             .isNull(() => (type = 'null'))
-            .isUndefined(() => (type = 'undefined'))
-            .isMap(() => (type = 'map'));
+            .isNumber(() => (type = 'number'))
+            .isObject(() => (type = 'object'))
+            .isString(() => (type = 'string'))
+            .isUndefined(() => (type = 'undefined'));
 
         return type;
     }
@@ -121,13 +123,44 @@ export class CheckType {
     }
 
     public isFunction(callback: () => void): CheckType {
-        if (typeof this.itemToCheck === 'function') {
+        if (
+            typeof this.itemToCheck === 'function' &&
+            !isClassDefinition(this.itemToCheck) &&
+            (this.itemToCheck.prototype === undefined ||
+                Object.entries(this.itemToCheck.prototype).length === 0)
+        ) {
             callback();
         }
         return this;
     }
     public isNotFunction(callback: () => void): void {
-        if (typeof this.itemToCheck !== 'function') {
+        if (
+            typeof this.itemToCheck !== 'function' ||
+            isClassDefinition(this.itemToCheck) ||
+            (this.itemToCheck.prototype !== undefined &&
+                Object.entries(this.itemToCheck.prototype).length > 0)
+        ) {
+            callback();
+        }
+    }
+
+    public isClass(callback: () => void): CheckType {
+        if (
+            typeof this.itemToCheck === 'function' &&
+            this.itemToCheck.prototype !== undefined &&
+            (isClassDefinition(this.itemToCheck) ||
+                Object.entries(this.itemToCheck.prototype).length > 0)
+        ) {
+            callback();
+        }
+        return this;
+    }
+    public isNotClass(callback: () => void): void {
+        if (
+            typeof this.itemToCheck !== 'function' ||
+            this.itemToCheck.prototype === undefined ||
+            Object.entries(this.itemToCheck.prototype).length === 0
+        ) {
             callback();
         }
     }
