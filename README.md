@@ -1,7 +1,7 @@
 # CheckType.of()
 
 ![CI](https://github.com/danielvigaru/check-type-of/actions/workflows/node.js.yml/badge.svg)
-![npm bundle size](https://img.shields.io/bundlephobia/minzip/check-type-of?style=flat&color=6699B8)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/%40danielvigaru%2Fcheck-type-of)](https://bundlephobia.com/package/@danielvigaru/check-type-of)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=flat&logo=ko-fi&logoColor=white&color=D34F4C)](https://ko-fi.com/Y8Y1DZBZU)
 
 ## Why did I make this?

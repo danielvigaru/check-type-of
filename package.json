@@ -1,5 +1,5 @@
 {
-  "name": "check-type-of",
+  "name": "@danielvigaru/check-type-of",
   "version": "1.0.0",
   "main": "lib/index.js",
   "files": [
@@ -11,7 +11,12 @@
     "test:once": "jest",
     "test:watch": "jest --watchAll"
   },
-  "keywords": [],
+  "keywords": [
+    "check",
+    "type",
+    "typesafe",
+    "validation"
+  ],
   "author": "Daniel Vigaru",
   "license": "ISC",
   "description": "",
