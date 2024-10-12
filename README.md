@@ -7,12 +7,12 @@ Work in Progress
 Because in JavaScript (almost) everything is an object:
 
 ```javascript
-typeof {}; // 'object' - totally agree
-typeof []; // 'object' - are you sure?
-typeof new Date(); // 'object' - ok, kind of makes sense because class instances are objects in JS, but it's useless
-typeof null; // 'object' - what?
-typeof undefined; // 'undefined' - finally something normal
-typeof NaN; // 'number' - how? it's in the name
+typeof {}; // -> 'object' - totally agree
+typeof []; // -> 'object' - are you sure?
+typeof new Date(); // -> 'object' - ok, kind of makes sense because class instances are objects in JS, but it's useless
+typeof null; // -> 'object' - what?
+typeof undefined; // -> 'undefined' - finally something normal
+typeof NaN; // -> 'number' - how? it's in the name
 ```
 
 And to add more complex type checking:
@@ -20,18 +20,18 @@ And to add more complex type checking:
 ```javascript
 // ES6 class
 class A {}
-typeof A; // 'function'
-CheckType.of(A).type; // 'class'
+typeof A; // -> 'function'
+CheckType.of(A).type; // -> 'class'
 
 // ES5 class
 function B() {}
 B.prototype.someMethod = function () {};
-typeof B; // 'function'
-CheckType.of(B).type; // 'class'
+typeof B; // -> 'function'
+CheckType.of(B).type; // -> 'class'
 
 // Don't worry, these still work as expected:
-CheckType.of(() => {}).type; // 'function'
-CheckType.of(function () {}).type; // 'function'
+CheckType.of(() => {}).type; // -> 'function'
+CheckType.of(function () {}).type; // -> 'function'
 ```
 
 ## Usage / Examples
@@ -47,14 +47,11 @@ import { CheckType, TItemType } from 'check-type-of';
 Get the type of an item by accessing the `type: TItemType` property:
 
 ```javascript
-CheckType.of(new Date()).type; // -> 'date'
+typeof []; // -> 'object'
+CheckType.of([]).type; // -> 'array'
 ```
 
-See how it says `'date'` and not `'object'`? Yeah.
-
-```javascript
-typeof new Date(); // -> 'object'
-```
+See how it says `'array'` and not `'object'`? Yeah.
 
 ### Using the `is...` and `isNot...` methods
 
