@@ -21,6 +21,10 @@
     "typesafe",
     "validation"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielvigaru/check-type-of.git"
+  },
   "author": "Daniel Vigaru",
   "license": "ISC",
   "description": "",
