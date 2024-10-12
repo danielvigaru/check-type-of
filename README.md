@@ -15,6 +15,24 @@ typeof undefined; // 'undefined' - finally something normal
 typeof NaN; // 'number' - how? it's in the name
 ```
 
+And to add more complex type checking:
+
+```javascript
+// ES6 class
+typeof class A {}; // 'function'
+CheckType.of(A).type; // 'class'
+
+// ES5 class
+function B() {}
+B.prototype.someMethod = function () {};
+typeof B; // 'function'
+CheckType.of(B).type; // 'class'
+
+// Don't worry, these still work as expected:
+CheckType.of(() => {}).type; // 'function'
+CheckType.of(function () {}).type; // 'function'
+```
+
 ## Usage / Examples
 
 Import the `CheckType` class, but do not instantiate it, just use `CheckType.of(item)` to access all the methods.
@@ -73,10 +91,12 @@ CheckType.of(someUnknownVariable)
 | `isFunction`  | a function that isn't an ES5 class           | `'function'`     |
 | `isMap`       | instanceof `Map`                             | `'map'`          |
 | `isNull`      | `null`                                       | `'null'`         |
-| `isNullish`   | `null`, `undefined`                          | -                |
+| `isNullish`\* | `null`, `undefined`                          | -                |
 | `isNumber`    | a number: decimal, octal, hex, binary, float | `'number'`       |
 | `isObject`    | `{}`, instanceof `Object`                    | `'object'`       |
 | `isString`    | a string                                     | `'string'`       |
 | `isUndefined` | `undefined`                                  | `'undefined'`    |
 
 All of these methods have an `isNot...` counterpart which will execute if the item you check doesn't evaluate to the `is...` method with the same name.
+
+\* Comodity method that doesn't write a value on the `.type` property.
