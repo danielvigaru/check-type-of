@@ -1,6 +1,19 @@
 # CheckType.of()
 
-Because in JavaScript (almost) everything is an object.
+Work in Progress
+
+## Why did I make this?
+
+Because in JavaScript (almost) everything is an object:
+
+```javascript
+typeof {}; // 'object' - totally agree
+typeof []; // 'object' - are you sure?
+typeof new Date(); // 'object' - ok, kind of makes sense because class instances are objects in JS, but it's useless
+typeof null; // 'object' - what?
+typeof undefined; // 'undefined' - finally something normal
+typeof NaN; // 'number' - how? it's in the name
+```
 
 ## Usage / Examples
 
@@ -51,18 +64,18 @@ CheckType.of(someUnknownVariable)
 
 ## Method Reference
 
-| **Method**    | **Executes the callback if the item is:**    | **Will not execute if the checked item is:**     |
-| ------------- | -------------------------------------------- | ------------------------------------------------ |
-| `isObject`    | `{}`, instance of `Object`                   | `[]`, `new Date()`, anything but a simple object |
-| `isArray`     | `[]`, instance of `Array`                    |                                                  |
-| `isDate`      | instance of `Date`                           |                                                  |
-| `isMap`       | instance of `Map`                            |                                                  |
-| `isString`    | a string                                     |                                                  |
-| `isNumber`    | a number: decimal, octal, hex, binary, float | `NaN`, `Infinity`                                |
-| `isFunction`  | a function                                   |                                                  |
-| `isBoolean`   | `true`, `false`                              | any value that could be coerced to a boolean     |
-| `isNull`      | `null`                                       | `undefined`                                      |
-| `isUndefined` | `undefined`                                  | `null`                                           |
-| `isNullish`   | `null`, `undefined`                          | anything else                                    |
+| **Method**    | **Executes the callback if the item is:**    | `.type` property |
+| ------------- | -------------------------------------------- | ---------------- |
+| `isArray`     | `[]`, instanceof `Array`                     | `'array'`        |
+| `isBoolean`   | `true`, `false`                              | `'boolean'`      |
+| `isDate`      | instanceof `Date`                            | `'date'`         |
+| `isFunction`  | a function                                   | `'function'`     |
+| `isMap`       | instanceof `Map`                             | `'map'`          |
+| `isNull`      | `null`                                       | `'null'`         |
+| `isNullish`   | `null`, `undefined`                          | -                |
+| `isNumber`    | a number: decimal, octal, hex, binary, float | `'number'`       |
+| `isObject`    | `{}`, instanceof `Object`                    | `'object'`       |
+| `isString`    | a string                                     | `'string'`       |
+| `isUndefined` | `undefined`                                  | `'undefined'`    |
 
-All of these methods have an `isNot...` counterpart which will execute if the item you check doesn't evaluate to the`is...` method with the same name.
+All of these methods have an `isNot...` counterpart which will execute if the item you check doesn't evaluate to the `is...` method with the same name.
