@@ -10,6 +10,7 @@
     "lib/**/*"
   ],
   "scripts": {
+    "prepublishOnly": "npm run test:once",
     "prebuild": "del-cli lib/*",
     "build": "tsc",
     "test:once": "jest",
