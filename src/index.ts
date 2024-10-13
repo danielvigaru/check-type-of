@@ -1,4 +1,4 @@
-import { isClassDefinition, isNumber } from './helpers';
+import { isClassDefinition, isNumber } from './helpers.js';
 
 export type TItemType =
     | 'array'
