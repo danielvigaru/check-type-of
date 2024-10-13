@@ -12,7 +12,7 @@
     "lib/**/*"
   ],
   "scripts": {
-    "prepublishOnly": "npm run test:once",
+    "prepublishOnly": "npm run test:once && npm run build",
     "prebuild": "del-cli lib/*",
     "build": "tsc",
     "test:once": "jest",
