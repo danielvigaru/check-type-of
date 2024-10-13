@@ -1,7 +1,8 @@
 # CheckType.of()
 
 [![CI](https://github.com/danielvigaru/check-type-of/actions/workflows/node.js.yml/badge.svg)](https://github.com/danielvigaru/check-type-of/actions/workflows/node.js.yml)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/%40danielvigaru%2Fcheck-type-of)](https://bundlephobia.com/package/@danielvigaru/check-type-of)
+[![npm](https://img.shields.io/badge/npm-FFF?style=flat&logo=npm&logoColor=fff&color=CB3837)](https://www.npmjs.com/package/@danielvigaru/check-type-of)
+[![bundlephobia](https://img.shields.io/bundlephobia/min/%40danielvigaru%2Fcheck-type-of)](https://bundlephobia.com/package/@danielvigaru/check-type-of)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-FF5E5B?style=flat&logo=ko-fi&logoColor=white&color=D34F4C)](https://ko-fi.com/Y8Y1DZBZU)
 
 ## Why did I create this?
