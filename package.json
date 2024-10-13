@@ -2,6 +2,7 @@
   "name": "@danielvigaru/check-type-of",
   "version": "0.0.0",
   "sideEffects": false,
+  "main": "lib/index.js",
   "module": "lib/index.js",
   "exports": {
     "import": "./lib/index.js"
