@@ -1,15 +1,3 @@
-import is_number from 'is-number';
-
-function isNumber(value: unknown): boolean {
-    // is_number returns true for numbers and strings that can be converted to numbers
-    return typeof value !== 'string' && is_number(value);
-}
-
-function isClassDefinition(item: unknown): boolean {
-    const definitionString = item?.toString() ?? '';
-    return /^class\s/.test(definitionString);
-}
-
 export type TItemType =
     | 'array'
     | 'boolean'
@@ -222,4 +210,17 @@ export class CheckType {
             callback();
         }
     }
+}
+
+function isNumber(value: unknown): boolean {
+    return (
+        typeof value === 'number' &&
+        !Number.isNaN(value) &&
+        Number.isFinite(value)
+    );
+}
+
+function isClassDefinition(item: unknown): boolean {
+    const definitionString = item?.toString() ?? '';
+    return /^class\s/.test(definitionString);
 }
