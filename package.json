@@ -1,6 +1,6 @@
 {
   "name": "@danielvigaru/check-type-of",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "sideEffects": false,
   "main": "lib/index.js",
