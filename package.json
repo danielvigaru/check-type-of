@@ -3,18 +3,15 @@
   "version": "1.0.3",
   "type": "module",
   "sideEffects": false,
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "exports": {
-    "import": "./lib/index.js"
-  },
+  "main": "lib/index.cjs",
+  "module": "lib/index.mjs",
   "files": [
-    "lib/**/*"
+    "lib/index.*"
   ],
   "scripts": {
     "prepublishOnly": "npm run test:once && npm run build",
     "prebuild": "del-cli lib/*",
-    "build": "tsc",
+    "build": "rollup -c",
     "test:once": "jest",
     "test:watch": "jest --watchAll"
   },
@@ -33,10 +30,13 @@
   "description": "",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.13",
     "del-cli": "^5.1.0",
     "jest": "^29.7.0",
+    "rollup": "^4.28.1",
     "ts-jest": "^29.2.5",
+    "tslib": "^2.8.1",
     "typescript": "^5.6.3"
   }
 }
