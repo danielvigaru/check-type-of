@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "type": "module",
   "sideEffects": false,
-  "main": "lib/index.cjs",
+  "main": "lib/index.umd.js",
   "module": "lib/index.mjs",
   "files": [
     "lib/index.*"
@@ -30,6 +30,7 @@
   "description": "",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/jest": "^29.5.13",
     "del-cli": "^5.1.0",
