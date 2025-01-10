@@ -75,7 +75,7 @@ Note: You can't chain multiple `isNot...` methods because it wouldn't make sense
 
 ```javascript
 CheckType.of(someUnknownVariable)
-    .isNumber(() => console.log("'It's a number"))
+    .isNumber(() => console.log("It's a number"))
     .isDate(() => console.log("Looks like we've got ourselves a date!"))
     .isArray(() => console.log("['A', 'r', 'r', 'a', 'y']"));
 ```
