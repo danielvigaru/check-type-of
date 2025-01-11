@@ -1,6 +1,6 @@
 {
   "name": "@danielvigaru/check-type-of",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "sideEffects": false,
   "main": "lib/index.umd.js",
